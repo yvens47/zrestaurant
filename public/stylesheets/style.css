@@ -1,0 +1,130 @@
+/* 
+CB997E 
+DDBEA9
+FFE8D6
+6B705C
+A5A58D
+B7B7A4
+*/
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+.bg-light-1 {
+  background-color: #cb997e;
+}
+.btn-primary {
+  background-color: #cb997e;
+  color: #ffe8d6;
+  border-color: #cb997e;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #cb997e;
+  border-color: #ead0c2;
+}
+.btn-primary:active {
+  color: #fff;
+  background-color: #cb997e;
+  border-color: #ead0c2;
+}
+
+.wrapper {
+  min-height: 100vh;
+}
+.banner {
+  width: 100%;
+  position: relative;
+}
+.banner img {
+  width: 100%;
+}
+.overlay-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+.banner .overlay-content {
+  background: linear-gradient(#9f8b7d94, #ffe8d69e);
+}
+.overlay-inner {
+}
+.overlay-inner h1 {
+  color: #ffe8d6;
+  font-family: Lobster;
+}
+.overlay-inner p {
+  color: #ffe8d6;
+  font-family: Lobster;
+}
+#foods h2 {
+  color: #cb997e;
+  font-family: Lobster;
+}
+#foods h2 span {
+  color: #6b705c;
+}
+#foods p {
+  color: #a5a58d;
+}
+.flip-card {
+  width: 300px;
+  height: 340px;
+  perspective: 1000px;
+}
+.flip-card .inner {
+  position: relative;
+  transition: transform 2s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+}
+.flip-card:hover .inner {
+  transform: rotateY(0.5turn);
+}
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+}
+
+.back {
+  background-color: #b7b7a4;
+  color: white;
+  transform: rotateY(0.5turn);
+  border-radius: 10px;
+}
