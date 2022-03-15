@@ -31,8 +31,39 @@ B7B7A4
   /* Support for IE. */
   font-feature-settings: "liga";
 }
+.material-icons-48 {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 48px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
 .bg-light-1 {
   background-color: #cb997e;
+}
+.navbar-light .navbar-brand {
+  color: #ffe8d6;
+}
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+  color: #ffe8d69e;
 }
 .btn-primary {
   background-color: #cb997e;
@@ -56,6 +87,9 @@ B7B7A4
 .banner {
   width: 100%;
   position: relative;
+  height: 100%;
+  background: url("https://images.pexels.com/photos/4262174/pexels-photo-4262174.jpeg?cs=srgb&dl=pexels-august-de-richelieu-4262174.jpg&fm=jpg");
+  background-size: cover;
 }
 .banner img {
   width: 100%;
@@ -75,10 +109,35 @@ B7B7A4
   color: #ffe8d6;
   font-family: Lobster;
 }
+
 .overlay-inner p {
   color: #ffe8d6;
   font-family: Lobster;
 }
+.column-3 {
+  text-align: center;
+}
+.column-info {
+  min-height: 400px;
+}
+.column-info h2 {
+  font-family: Lobster;
+  color: #9a998c;
+}
+.column-info p {
+  color: #888884;
+}
+.column-info:nth-child(1) span {
+  color: #888884;
+  font-weight: bold;
+  border: solid #eeee 3px;
+  display: block;
+  width: 70px;
+  background: white;
+  padding: 10px;
+  transition: all 1s;
+}
+
 #foods h2 {
   color: #cb997e;
   font-family: Lobster;
@@ -127,4 +186,40 @@ B7B7A4
   color: white;
   transform: rotateY(0.5turn);
   border-radius: 10px;
+}
+.video {
+  border: solid 1px #eee;
+  border-bottom-color: rgb(238, 238, 238);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding: 20px;
+  border-bottom: solid 5px #b7b7a4;
+}
+.video video {
+  width: 100%;
+}
+@media (min-width: 576px) {
+  .banner {
+    height: 100vh;
+  }
+}
+@media (max-width: 575.98px) {
+  .banner {
+    height: 100vh;
+  }
+  .banner .overlay-content {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 767.98px) {
+}
+
+@media (max-width: 991.98px) {
+}
+
+@media (max-width: 1199.98px) {
+}
+
+@media (max-width: 1399.98px) {
 }

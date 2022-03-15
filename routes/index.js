@@ -5,10 +5,11 @@ var router = express.Router();
 router.get("/", function (req, res, next) {
   res.render("index", {
     data: {
-      title: "Express",
+      title: "Food Application-ejs",
       trendings: [
         {
           name: "Hot Spicy Latte",
+          likes: "400",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           image:
@@ -18,6 +19,7 @@ router.get("/", function (req, res, next) {
           name: "Pumpkin Spicy smoothy",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          likes: "900",
           image:
             "https://images.pexels.com/photos/3756512/pexels-photo-3756512.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         },
