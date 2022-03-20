@@ -578,30 +578,36 @@ p {
 
 /*Login*/
 
-.login input[type=text], input[type=password], input[type=email]{
+.login input[type=text], .login input[type=password], .login input[type=email]{
   background: #c49278;
   border-color: #ffe8d685;
 
 }
-.login input[type=text]:focus , input[type=password]:focus , input[type=email]:focus {
- background: #c49278;
+.login input[type=text]:focus .loign input[type=password]:focus , .login input[type=email]:focus {
+background: #c49278;
 outline: 0;
 color: #212529;
 border-color: #ffe8d685;
 outline: 0;
 box-shadow: 0 0 0 .25rem rgb(203, 153, 126);
-}
+
 }
 
 /* ends Login*/
 /* register */
-.form-wrapper form {
+.form-wrapper  {
   background: white;
-  padding: 10px;
+  padding: 15px;
   border: solid 1px #eee;
+  min-height: 300px;
 }
 
 
+
+.form-wrapper input[type=password]:focus ,.form-wrapper input[type=email]:focus{
+  background: white;
+  border:solid 1px #eee;
+}
 
 
 
