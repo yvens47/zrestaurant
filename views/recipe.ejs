@@ -1,0 +1,130 @@
+<%- include('./partials/header'); %>
+
+
+<main class="main d-sm-flex ">
+
+	<div class="content flex-sm-column d-sm-flex">
+		<div class="container">
+			<div class="row py-4">
+				<div class="col-md-12">
+					<div class="recipe-view-wrapper py-5">
+						<div class="recipe-view">
+							<div class="recipe-item">
+								<img class='p-2 border 'src="<%= data.image %>" alt="" width="100%" />
+								<button class="save_btn btn btn-primary ">
+									<span class="material-icons">favorite_border</span>
+								</button>
+								<button class="likes_btn btn  btn-primary  justify-content-start align-items-center">
+									<span class="material-icons">thumb_up</span>
+								</button>
+
+							</div>
+							
+							<h1 class="display" style="font-family: Lobster;">
+								<%= data.title %>
+							</h1>
+							<div class="recipe-view-description">
+								<p class="lead"><%= data.description %></p>
+							</div>
+							
+						</div>
+						<div class="recipe-view-details py-3">
+							<h1 class="display-5 ">
+								Ingredients needed
+							</h1>
+								<div class="ingredients d-flex flex-sm-row justify-content-start">
+
+
+									
+
+									  <% entries=data.ingredients.map(function(elem) { 
+							            return `
+												
+													<div class=" ingredient p-2 flex-shrink-1 d-flex flex-column justify-content-center align-items-center">
+														<a href="/recipes/">
+															<img 													width="70%" 
+															src="${elem.image}" alt='' class="img-thumbnail"/>
+														</a>
+															<p class="lead">
+															<a href="/recipes/${elem.id}" class="link-secondary text-decoration-none">${elem.name}</a></p>
+													</div>`
+							          ; }) %>
+							         <%- entries %> 
+									
+									
+									
+								</div>
+							</div>
+						
+						<div class="recipe-steps">
+						<h1 class="display-5 ">
+								Follow these steps below
+							</h1>
+						<p class="lead"><%- JSON.stringify(data.steps) %></p>
+						</div>
+						<div class="recipe-view-comments  d-flex flex-column">
+							<!-- comment form -->
+							<div class="comments-form">
+								<h4> 4 comments</h4>
+								<div class="mb-3">
+								  <label for="exampleFormControlTextarea1" class="form-label">Be the first to comment</label>
+								  <textarea placeholder='comment' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+								</div>
+								<button class="btn btn-primary">Post</button>
+							</div>
+							<div class="comments-wrapper d-flex">
+								<!-- display all comments -->
+								
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+			</div>
+		</div>		
+
+	</div>
+	<aside class="aside border-start  d-flex flex-shrink-1">
+		<div class="inner-aside">
+		<div class="container">
+			<div class="row py-4">
+
+				<div class="col-md-12 py-5">
+						<div class="user-recipe d-flex flex-sm-column border p-2 mb-2 shadow-sm ">
+							<div class="flex-shrink-1 d-flex justify-content-center ">
+								<img class='rounded-circle p-3 border'width="70%" src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' alt='username here'/>
+								
+							</div>
+							<div class="flex-grow-1 ">
+								<p class=" text-center">Nicolson Zeust</p>
+								<p class="lead text-center">Lorem ipsum dolor sit amet.</p>
+								<p class="text-center"><button onclick="alert('hello world')" class="btn btn-outline-primary btn-block">Follow</button>
+
+							</div>
+							<div></div>
+							
+							</div>
+						<div class="user-recipe d-flex flex-sm-row border p-2 mb-2 shadow-sm mb-5">
+
+							<div class="card" style="width: 100%;">
+							  <div class="card-header">
+							    Most Popular
+							  </div>
+							  <ul class="list-group list-group-flush">
+							    <li class="list-group-item">An item</li>
+							    <li class="list-group-item">A second item</li>
+							    <li class="list-group-item">A third item</li>
+							  </ul>
+							</div>
+	
+						</div>
+
+				</div>
+			</div>
+		</div>
+	</div>		
+	</aside>
+
+
+</main>

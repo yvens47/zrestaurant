@@ -3,6 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
+
+
   res.render("index", {
     data: {
       title: "Food Application-ejs",
@@ -27,5 +29,27 @@ router.get("/", function (req, res, next) {
     },
   });
 });
+
+// planner
+router.get("/my-plan", (req, res) => {
+  res.render("meal-planner", { data: { title: "", meals: [], recipes:[
+    {name:"Peanut Butter Fried Chicken", steps:[],ingredients:[], image:"https://images.pexels.com/photos/3756512/pexels-photo-3756512.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
+
+    ], } });
+});
+
+/* login form  users listing. */
+router.get('/login', function(req, res, next) {
+  res.render('login',{data:{title:"Login"}});
+});
+
+
+router.get('/register', function(req, res, next) {
+
+  res.render('register',{data:{title:"Sign up"}});
+});
+
+
+
 
 module.exports = router;

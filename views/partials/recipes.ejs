@@ -1,0 +1,26 @@
+
+
+            <% entries=data.map(function(elem) { 
+            return `<div class="d-flex flex-column">
+									<div class="recipe-wrapper-item border p-1  d-sm-flex flex-sm-row ">
+										<div class="flex-shrink-1 p-2">
+											<a href="/recipes/${elem.id}"><img loading='lazy' src='${elem.image}' alt='' class="img-thumbnail"/></a>
+										</div> 
+										<div class="flex-grow-1 p-2">
+											<h2 style="font-family: Lobster;">
+												<a href="/recipes/${elem.id}" class="link-secondary text-decoration-none">${elem.title}</a></h2>
+												<div class="recipes-views">
+													<span class="badge rounded-pill bg-secondary"> ${elem.views} views</span>
+													<span class="badge rounded-pill bg-info"> ${elem.likes} Likes</span>
+												</div>
+											<p class="lead">${elem.description}</p>
+										</div>
+										
+									</div>
+
+
+								</div>`
+          ; }) %>
+          <p>
+            <%- entries %>
+          </p>
