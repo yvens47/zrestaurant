@@ -6,11 +6,17 @@
 				<div class="d-flex border-bottom flex-column pt-3 pb-3">
 					<h1 class="display-3"> All Recipes (<%= data.length %>)</h1>
 					<p class="lead">a responsibility that I have, to push possibilities, to show people.</p>
+					<div class="recipe-filter d-flex">
+						<button type="button" name="button" class='btn btn-outline-primary me-1'>most views</button>
+							<button type="button" name="button" class='btn btn-outline-secondary me-1'>Newest</button>
+								<button type="button" name="button" class='btn btn-outline-info'>Likes</button>
+
+					</div>
 				</div>
 
 				<!-- Recipes list -->
 				<%- include('./partials/recipes') %>
-				
+
 
 				<!-- pagination -->
 				<div class="d-flex mt-3">
@@ -32,7 +38,7 @@
 				    </li>
 				  </ul>
 				</nav>
-					
+
 				</div>
 				<!-- pagination ends here -->
 			</div>
@@ -42,6 +48,6 @@
 				<!-- Feature -->
 			</div>
 		</div>
-		
+
 	</div>
 </div>

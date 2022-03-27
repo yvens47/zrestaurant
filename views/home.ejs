@@ -12,6 +12,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100&display=swap"
         rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 
 
@@ -75,16 +77,78 @@
     </div>
   </div>
   <!-- sidebar ends here -->
-  <div class='home-dashboard ' style='margin-left:4.5rem;'>
-     <div class='container'>
-       <div class='row py-5'>
-         <div class="col-md-9">
+  <!-- main-dashboard -->
+  <div class='home-dashboard ' style='margin-left:4.5rem; width:calc(100% - 4.5rem)'>
+     <div class='container '>
+       <div class="row">
+         <div class="dashboard-title d-flex border-bottom">
            <h1 class="display-5" style='font-family:Lobster'>Dashboard</h1>
-           <%= JSON.stringify(userName) %>
+         </div>
 
+       </div>
+       <div class='row py-5 justify-content-start '>
+         <div class="col-md-8 dash-wrapper shadow p-3">
+           <!-- Line Graph -->
+           <div class="line-graph " id='' style='height:400px; width:100%'>
+             <canvas id="myChart" width="100%" height="400"></canvas>
+           </div>
+           <!-- line graphs ends here -->
+         </div>
+         <div class="col-md-4 shadow p-3">
+           <!-- Doghnut chart -->
+           <div class="doghnut" id='chart-2'>
+             <canvas id="canvas-chart" width="300" height="300"></canvas>
+
+           </div>
          </div>
 
        </div>
      </div>
   </div>
+    <!-- main-dashboard ends here -->
+
 </main>
+<!--  -->
+<script type="text/javascript">
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const ctxX = document.getElementById('canvas-chart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+            label: 'Monthly Calories',
+            data: [12000, 9000, 12000, 11000, 10000, 16000],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+      maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+
+</script>

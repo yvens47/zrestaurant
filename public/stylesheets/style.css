@@ -329,6 +329,11 @@ p {
 }
 .recipe-wrapper-item{
   height: 300px;
+  transition: all 2000ms
+}
+.recipe-wrapper-item:hover {
+  background: #f7f7f7;
+  transition: all 2000ms;
 }
 .action-wrapper{
   background: #cb997ee8;
