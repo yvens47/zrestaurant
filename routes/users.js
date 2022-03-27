@@ -5,27 +5,23 @@ const UserController = require("../controllers/UserController")
 
 
 
-
-
-router.post('/', UserController.login );
+// signup
+router.post("/register", UserController.register);
+router.post('/', UserController.login);
 
 // user home
-
 router.get('/dashboard', function(req, res, next) {
-   const email = true;
-   // user logged in
-   if(email){
-     res.render('home', { user :{username:"yvens47"}, data:{title:"My dashboard"}} )
+  const email = true;
+  // user logged in
+  if (email) {
+    res.render('home', { user: { username: "yvens47" }, data: { title: "My dashboard" } })
 
-   }else{
+  } else {
 
     // otherwise redirect to login
     res.redirect("/login")
 
-   }
-
-
-
+  }
 });
 
 

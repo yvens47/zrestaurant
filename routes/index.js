@@ -26,7 +26,7 @@ router.get("/", function (req, res, next) {
             "https://images.pexels.com/photos/3756512/pexels-photo-3756512.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         },
       ],
-      isLogged:true
+      isLogged:false
 
     },
   });
@@ -45,9 +45,7 @@ router.get('/login', function(req, res, next) {
   res.render('login',{data:{title:"Login"}});
 });
 
-
 router.get('/register', function(req, res, next) {
-
   res.render('register',{data:{title:"Sign up"}});
 });
 

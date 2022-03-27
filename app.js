@@ -6,6 +6,7 @@ var logger = require('morgan');
 const flash = require('connect-flash')
 const session =require('express-session')
 const bodyParser =  require('body-parser');
+const db = require('./utils/db.js')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,7 +31,9 @@ app.use(session({
   saveUninitialized: true
 }))
 app.use(flash())
-
+// connect db
+db().catch(err => console.log(err));
+// routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipeRouter);
