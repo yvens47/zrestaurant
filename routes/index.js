@@ -26,6 +26,8 @@ router.get("/", function (req, res, next) {
             "https://images.pexels.com/photos/3756512/pexels-photo-3756512.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         },
       ],
+      isLogged:true
+
     },
   });
 });

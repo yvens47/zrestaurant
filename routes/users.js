@@ -11,11 +11,21 @@ router.post('/', UserController.login );
 
 // user home
 
-router.get('/home/:email', function(req, res, next) {
-   const {email} = req.params;
-   console.log(email);
+router.get('/dashboard', function(req, res, next) {
+   const email = true;
+   // user logged in
+   if(email){
+     res.render('home', { user :{username:"yvens47"}, data:{title:"My dashboard"}} )
 
-  res.render('home', { userName :email, data:{title:"Dashboard"}} )
+   }else{
+
+    // otherwise redirect to login
+    res.redirect("/login")
+
+   }
+
+
+
 });
 
 
