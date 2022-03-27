@@ -328,7 +328,7 @@ p {
 
 }
 .recipe-wrapper-item{
-  height: 300px;
+  min-height: 300px;
   transition: all 2000ms
 }
 .recipe-wrapper-item:hover {
