@@ -105,16 +105,16 @@
           password: password.value
         })
         .then(function (response) {
-          console.log(response);
+         
           if(response.data.success){
             console.log(response.data);
             // save user to localstorage
              window.loaction ='/login';
             
           }else{          
-            
+            console.log(response)
             var toast = new bootstrap.Toast(toastLiveExample)
-						toastBody[0].innerHTML = response.data.error;
+						toastBody[0].innerHTML = response.data.message;
     				toast.show();
 						return;           
            
