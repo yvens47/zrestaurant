@@ -59,6 +59,7 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     <!-- toast -->
     <div class="toast-container position-absolute bottom-0 end-0 p-3">
       <div id='toast' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -76,6 +77,26 @@
     <!-- toast end -->
 
   </main>
+=======
+  </div>
+<!-- toast -->
+		<div class="toast-container position-absolute bottom-0 end-0 p-3" >
+		<div id='toast' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+		  <div class="toast-header">
+		    <img src="..." class="rounded me-2" alt="error">
+		    <strong class="me-auto">Error</strong>
+		    <small>11 mins ago</small>
+		    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		  </div>
+		  <div class="toast-body">
+		    Hello, world! This is a toast message.
+		  </div>
+		</div>
+	</div>
+		<!-- toast end -->
+
+</main>
+>>>>>>> 4e3399d9dda38a193efc82f70f5af3c1a40eefed
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script type='text/javascript'>
@@ -104,6 +125,7 @@
           email: email.value,
           password: password.value
         })
+<<<<<<< HEAD
           .then(function (response) {
             console.log(response);
             if (response.data.success) {
@@ -122,6 +144,27 @@
           .catch(function (error) {
             console.log(error);
           });
+=======
+        .then(function (response) {
+         
+          if(response.data.success){
+            console.log(response.data);
+            // save user to localstorage
+             window.loaction ='/login';
+            
+          }else{          
+            console.log(response)
+            var toast = new bootstrap.Toast(toastLiveExample)
+						toastBody[0].innerHTML = response.data.message;
+    				toast.show();
+						return;           
+           
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+>>>>>>> 4e3399d9dda38a193efc82f70f5af3c1a40eefed
       }
 
     })
