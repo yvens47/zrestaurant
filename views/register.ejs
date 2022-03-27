@@ -27,7 +27,7 @@
 
 
 
-<main class="main d-flex align-items-center justify-content-center border-top" style="min-height: 100vh; background: #eee;">
+<main class="main d-flex align-items-center justify-content-center border-top" style="min-height: 100vh; background: #eee;     background-image: linear-gradient(15deg, #eee 50%,#cb997e 50% );">
 	<div class="container">
 		<div class="row  justify-content-center align-items-center py-5">
 
@@ -59,7 +59,21 @@
         </div>
     </div>
   </div>
-
+<!-- toast -->
+		<div class="toast-container position-absolute bottom-0 end-0 p-3" >
+		<div id='toast' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+		  <div class="toast-header">
+		    <img src="..." class="rounded me-2" alt="...">
+		    <strong class="me-auto">Error</strong>
+		    <small>11 mins ago</small>
+		    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		  </div>
+		  <div class="toast-body">
+		    Hello, world! This is a toast message.
+		  </div>
+		</div>
+	</div>
+		<!-- toast end -->
 
 </main>
 
@@ -69,6 +83,8 @@
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     const error = document.getElementById('error');
+    var toastLiveExample = document.getElementById('toast');
+	  const toastBody = document.getElementsByClassName('toast-body')
     
 
     registerForm.addEventListener('submit',(e)=>{
@@ -92,9 +108,16 @@
           console.log(response);
           if(response.data.success){
             console.log(response.data);
-          }else{
-            // redirect back to login
-            window.loaction ='/login';
+            // save user to localstorage
+             window.loaction ='/login';
+            
+          }else{          
+            
+            var toast = new bootstrap.Toast(toastLiveExample)
+						toastBody[0].innerHTML = response.data.error;
+    				toast.show();
+						return;           
+           
           }
         })
         .catch(function (error) {
