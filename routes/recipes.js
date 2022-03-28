@@ -1,25 +1,17 @@
 var express = require('express');
 var router = express.Router();
-const Recipes = require("../models/recipes.model");
+const recipeController = require("../controllers/RecipeController")
 
 /* GET recipes listing. */
 
-router.get("/", (req, res) => {
- 
-  res.render("recipes", { data:Recipes});
-})
+router.get("/", recipeController.recipes );
+
 
 // get a recipes
-router.get("/:id", (req, res)=>{
-  const {id}= req.params;
-  const results = Recipes.filter((value)=>value.id === id);
+router.get("/:id", recipeController.read)
 
-  //no resulst
-  if(results.length == 0)
-    return res.json({data:{notFound:true, message:"Oops The page you are looking for is not found..."}}); 
-
-  return res.render("recipe",{data:results[0]});
-})
+// add a recipe
+router.get("/add", recipeController.create);
 
 
 module.exports = router;
