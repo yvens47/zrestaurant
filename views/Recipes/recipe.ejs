@@ -1,6 +1,7 @@
 <%- include('../partials/header'); %>
 
 
+
 <main class="main d-sm-flex ">
 
 	<div class="content flex-sm-column d-sm-flex">
@@ -10,6 +11,15 @@
 					<div class="recipe-view-wrapper py-5">
 						<div class="recipe-view">
 							<div class="recipe-item">
+								<div class='header d-flex flex-column'>
+									<h1 class="display" style="font-family: Lobster;">
+										<%= data.title %>
+									</h1>
+									<div>
+
+										<%= JSON.stringify(data.createdAt) %>
+									</div>
+								</div>
 								<img class='p-2 border 'src="<%= data.image %>" alt="" width="100%" />
 								<button class="save_btn btn btn-primary ">
 									<span class="material-icons">favorite_border</span>
@@ -19,24 +29,22 @@
 								</button>
 
 							</div>
-							
-							<h1 class="display" style="font-family: Lobster;">
-								<%= data.title %>
-							</h1>
+
+
 							<div class="recipe-view-description">
 								<p class="lead"><%= data.description %></p>
 							</div>
-							
+
 						</div>
 						<div class="recipe-view-details py-3">
 							<h1 class="display-5 ">
 								Ingredients needed
 							</h1>
 								<div class="ingredients d-flex flex-sm-row justify-content-start">
-                
+
 
 									<% for(let i=0; i<data.ingredients.length; i++){ %>
-                   
+
 		                  <div class=" ingredient p-2 flex-shrink-1 d-flex flex-column justify-content-center align-items-center me-1">
 														<a href="/recipes/">
 															<img width="70%" src="<%= data.ingredients[i].image %>" alt='' class="img-thumbnail"/>
@@ -44,24 +52,24 @@
 															<p class="lead">
 															<a href="/recipes/<%= data.ingredients[i]._id %>" class="link-secondary text-decoration-none"><%= data.ingredients[i].name %></a></p>
 													</div>
-                    
+
                  <% }  %>
 
-									
-									
-									
+
+
+
 								</div>
 							</div>
-						
+
 						<div class="recipe-steps">
 						<h1 class="display-5 ">
 								Follow these steps below
 							</h1>
 						<% for( let i=0; i<data.steps.length; i++){ %>
             <p class="lead"> <span><%- i+1 %> - </span> <%=  data.steps[i] %></p>
-              
+
             <%} %>
-              
+
 						</div>
 						<div class="recipe-view-comments  d-flex flex-column">
 							<!-- comment form -->
@@ -75,15 +83,15 @@
 							</div>
 							<div class="comments-wrapper d-flex">
 								<!-- display all comments -->
-								
+
 							</div>
 						</div>
 
 					</div>
 				</div>
-				
+
 			</div>
-		</div>		
+		</div>
 
 	</div>
 	<aside class="aside border-start  d-flex flex-shrink-1">
@@ -105,7 +113,7 @@
 
 							</div>
 							<div></div>
-							
+
 							</div>
 						<div class="user-recipe d-flex flex-sm-row border p-2 mb-2 shadow-sm mb-5">
 
@@ -119,13 +127,13 @@
 							    <li class="list-group-item">A third item</li>
 							  </ul>
 							</div>
-	
+
 						</div>
 
 				</div>
 			</div>
 		</div>
-	</div>		
+	</div>
 	</aside>
 
 

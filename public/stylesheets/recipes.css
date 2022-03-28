@@ -1,0 +1,24 @@
+
+
+.recipe-wrapper .main{
+
+}
+.sidebar-recipe{
+  position:relative;
+
+}
+.sidebar-inner{
+  position: fixed;
+  height: 100%;
+  width:150px;
+
+  top:0;
+}
+.sidebar-inner div{
+  height:100%;
+  width:100%;
+}
+.sidebar-inner div>div{
+  height:50px;
+  width:100%;
+}

@@ -49,6 +49,9 @@ router.get('/login', function(req, res, next) {
 router.get('/register', function(req, res, next) {
   res.render('register',{data:{title:"Sign up"}});
 });
+router.get("/add", (req, res)=>{
+  res.render("Recipes/add",{title:"Add A recipe"});
+})
 
 
 

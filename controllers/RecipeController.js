@@ -1,6 +1,7 @@
 
 var ObjectId = require('mongoose').Types.ObjectId;
 
+
 // import users model
 const RecipesModel = require("../models/recipes.model");
 
@@ -15,9 +16,36 @@ const Recipes = model => async (req, res) => {
 // create
 const Create = model => (req, res) => {
 
-  console.log("creaate a recipe");
 
-  res.json("create");
+
+  try {
+
+
+    const {recipe, about} =req.body;
+    if(recipe ===''){
+      return res.json({message:"there must be a title"})
+
+    }
+
+
+    const recipeObject = {title:name,description:about};
+    const newRecipe = new model(recipeObject);
+
+    newRecipe.save(function(error){
+      if(error)return res.json({message:"could not create document"})
+      res.json({message:"success completed"})
+        });
+
+  } catch (e) {
+    console.log(e);
+
+  }
+
+
+
+
+
+
 
 }
 // read
@@ -31,9 +59,9 @@ const Read = model => async (req, res) => {
     if(error && !doc ) return res.render('notfound',{notFound:"Not Found."});
 
     return res.render("Recipes/recipe", { data: doc });
-      
+
     });
-   
+
 
   } catch (error) { console.log(error) };
 

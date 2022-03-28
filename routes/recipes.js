@@ -11,7 +11,7 @@ router.get("/", recipeController.recipes );
 router.get("/:id", recipeController.read)
 
 // add a recipe
-router.get("/add", recipeController.create);
+router.post("/add", recipeController.create);
 
 
 module.exports = router;

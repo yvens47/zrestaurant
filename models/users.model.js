@@ -12,7 +12,7 @@ const userSchema = new Schema({
   token: String,
   profile:String
 
-});
+}, {timestamps:true});
 
 userSchema.pre("save", function (next) {
   if (!this.isModified("password")) return next();
