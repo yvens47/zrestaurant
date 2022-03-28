@@ -92,17 +92,12 @@
 
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
       //validation
       if (email.value === '' && password.value === '') {
         error.innerHTML = 'email and password is required';
         return;
 
       } else {
-
-
-
-
         axios.post('/users/register', {
           email: email.value,
           password: password.value
@@ -111,7 +106,6 @@
         .then(function (response) {
 
           if(response.data.success){
-            console.log(response.data);
             // save user to localstorage
              window.location ='/login';
 

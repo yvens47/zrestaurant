@@ -1,4 +1,4 @@
-<%- include('./partials/header'); %>
+<%- include('../partials/header'); %>
 
 
 <main class="main d-sm-flex ">
@@ -33,23 +33,20 @@
 								Ingredients needed
 							</h1>
 								<div class="ingredients d-flex flex-sm-row justify-content-start">
+                
 
-
-									
-
-									  <% entries=data.ingredients.map(function(elem) { 
-							            return `
-												
-													<div class=" ingredient p-2 flex-shrink-1 d-flex flex-column justify-content-center align-items-center">
+									<% for(let i=0; i<data.ingredients.length; i++){ %>
+                   
+		                  <div class=" ingredient p-2 flex-shrink-1 d-flex flex-column justify-content-center align-items-center me-1">
 														<a href="/recipes/">
-															<img 													width="70%" 
-															src="${elem.image}" alt='' class="img-thumbnail"/>
+															<img width="70%" src="<%= data.ingredients[i].image %>" alt='' class="img-thumbnail"/>
 														</a>
 															<p class="lead">
-															<a href="/recipes/${elem.id}" class="link-secondary text-decoration-none">${elem.name}</a></p>
-													</div>`
-							          ; }) %>
-							         <%- entries %> 
+															<a href="/recipes/<%= data.ingredients[i]._id %>" class="link-secondary text-decoration-none"><%= data.ingredients[i].name %></a></p>
+													</div>
+                    
+                 <% }  %>
+
 									
 									
 									
@@ -60,7 +57,11 @@
 						<h1 class="display-5 ">
 								Follow these steps below
 							</h1>
-						<p class="lead"><%- JSON.stringify(data.steps) %></p>
+						<% for( let i=0; i<data.steps.length; i++){ %>
+            <p class="lead"> <span><%- i+1 %> - </span> <%=  data.steps[i] %></p>
+              
+            <%} %>
+              
 						</div>
 						<div class="recipe-view-comments  d-flex flex-column">
 							<!-- comment form -->
@@ -93,12 +94,13 @@
 				<div class="col-md-12 py-5">
 						<div class="user-recipe d-flex flex-sm-column border p-2 mb-2 shadow-sm ">
 							<div class="flex-shrink-1 d-flex justify-content-center ">
-								<img class='rounded-circle p-3 border'width="70%" src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60' alt='username here'/>
-								
+                <div class='position-relative d-flex justify-content-center'>
+								<img class='rounded-circle p-3 border'width="70%" src='<%= data.user.profile %>' alt='username here'/>
+                </div>
 							</div>
 							<div class="flex-grow-1 ">
-								<p class=" text-center">Nicolson Zeust</p>
-								<p class="lead text-center">Lorem ipsum dolor sit amet.</p>
+								<p class=" text-center"><%= data.user.name %></p>
+								<p class="lead text-center"><%= data.user.about %>.</p>
 								<p class="text-center"><button onclick="alert('hello world')" class="btn btn-outline-primary btn-block">Follow</button>
 
 							</div>

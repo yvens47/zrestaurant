@@ -1,5 +1,23 @@
 
-const Recipes = [
+const mongoose = require('mongoose');
+const {Schema} = mongoose;
+
+
+const recipeSchema = new Schema({
+  title:{type:String,minLength:8},
+  description:String,
+  steps:{type:Array, default:null},
+  ingredients:[],
+  image:String,
+  user:Object,
+  views:{type:Array, default:[]},
+  likes:{type:Array, default:[]},
+  
+  
+  
+})
+const Recipe = mongoose.model("Recipe",recipeSchema);
+/* const Recipes = [
 
         { id:"12345",
           title: "ipsum dolor ",
@@ -41,6 +59,6 @@ const Recipes = [
           image:"https://images.pexels.com/photos/6287298/pexels-photo-6287298.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         }
 
-    ]
+    ]*/
 
-module.exports = Recipes;
+module.exports = Recipe;

@@ -5,10 +5,13 @@ const saltRounds = 10;
 // user schema
 const userSchema = new Schema({
   username: { type: String, default: "" }, // String is shorthand for {type: String}
+  fullname:String,
   password: { type: String, required: true, minLength: 8 },
   about: { type: String, default: "" },
   email: { type: String, unique: true },
   token: String,
+  profile:String
+
 });
 
 userSchema.pre("save", function (next) {

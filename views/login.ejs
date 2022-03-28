@@ -105,27 +105,24 @@
 			})
 			.then(response => response.json())
 			.then(data => {
+					if(data.error){
+						var toast = new bootstrap.Toast(toastLiveExample)
+						toastBody[0].innerHTML = data.error;
+    				toast.show()
+						return;
+					}else{
 
-        console.log(data);
+						var toast = new bootstrap.Toast(toastLiveExample)
+						toastBody[0].innerHTML = data.message;
+						toast.show()
+						// set user and passwords to localstorage
+						 if(!localStorage.getItem('user')){
+							 localStorage.setItem('user', JSON.stringify(data.user));
+						 }
+						setTimeout(()=>window.location =`/users/dashboard`,1000)
+						return;
 
-					// if(data.error){
-					// 	var toast = new bootstrap.Toast(toastLiveExample)
-					// 	toastBody[0].innerHTML = data.error;
-    	// 			toast.show()
-					// 	return;
-					// }else{
-
-					// 	var toast = new bootstrap.Toast(toastLiveExample)
-					// 	toastBody[0].innerHTML = data.message;
-					// 	toast.show()
-					// 	setTimeout(()=>window.location =`/users/home/jyvenspierre@gmail.com`,1000)
-					// 	return;
-
-					// }
-
-
-			  		//window.location =`/users/home/jyvenspierre@gmail.com`;
-
+					}
 			})
 			.catch((error) => {
 			  console.error('Error:', error);

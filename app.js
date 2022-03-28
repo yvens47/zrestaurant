@@ -24,6 +24,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser("notSoSecret"));
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(function(req, res, next) {
+//   res.locals.user = req.session.user;
+//   next();
+// });
 app.use(session({
   secret : 'something',
   cookie: { maxAge: 60000 },
