@@ -1,9 +1,11 @@
 var express = require("express");
+const AuthController = require("../controllers/AuthController")
 var router = express.Router();
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
 
+/* GET home page. */
+router.get("/",  function (req, res, next) {
+  
 
   res.render("index", {
     data: {
@@ -32,16 +34,14 @@ router.get("/", function (req, res, next) {
   });
 });
 
-// planner
-router.get("/my-plan", (req, res) => {
-  res.render("meal-planner", { data: { title: "", meals: [], recipes:[
-    {name:"Peanut Butter Fried Chicken", steps:[],ingredients:[], image:"https://images.pexels.com/photos/3756512/pexels-photo-3756512.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"}
 
-    ], } });
-});
 
 /* login form  users listing. */
-router.get('/login', function(req, res, next) {
+router.get('/login', function(req, res, next) { 
+  if(req.cookies.jwt){
+    res.redirect("/users/dashboard");
+  }
+  
   res.render('login',{data:{title:"Login"}});
 });
 
@@ -49,6 +49,12 @@ router.get('/register', function(req, res, next) {
   res.render('register',{data:{title:"Sign up"}});
 });
 
+router.get("/diet", (req, res)=>{
+
+  const diets=["Vegetarian", "Ketogenic",'Paleo',"Gluten Free","Lacto-Vegetarian","Whole30","Perscetarian"];
+  
+  res.render("diet", {data:{title:"set your diet",diets}});
+})
 
 
 

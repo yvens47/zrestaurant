@@ -1,4 +1,9 @@
+<% if(data.length ==0){  %>
 
+  <h1 class='displa-4'>No Recipes Yet</h1>
+
+  
+<%}else{ %>
 
 <% for(var i=0; i< data.length; i++){ %>
   <div class="d-flex flex-column mb-2 shadow">
@@ -24,7 +29,5 @@
 
 
       </div>
-
-
-
+<%} %>
 <%} %>

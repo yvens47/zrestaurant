@@ -12,10 +12,11 @@ const recipeSchema = new Schema({
   user:Object,
   views:{type:Array, default:[]},
   likes:{type:Array, default:[]},
+  comments:[],
   
   
   
-})
+},{timestamps:true})
 const Recipe = mongoose.model("Recipe",recipeSchema);
 /* const Recipes = [
 

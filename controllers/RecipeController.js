@@ -26,8 +26,7 @@ const Read = model => async (req, res) => {
   try {
     const { id } = req.params;
     const result = model.findById(id,(error, doc)=>{
-       console.log(doc)
-      console.log(error)
+     
     if(error && !doc ) return res.render('notfound',{notFound:"Not Found."});
 
     return res.render("Recipes/recipe", { data: doc });

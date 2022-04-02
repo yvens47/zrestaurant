@@ -66,15 +66,57 @@
 						<div class="recipe-view-comments  d-flex flex-column">
 							<!-- comment form -->
 							<div class="comments-form">
-								<h4> 4 comments</h4>
+								<h4><%= data.comments.length %></h4>
+
+<!--                 comment form  -->
+                <form action="/<%= data._id %>/comment" method='post'>
 								<div class="mb-3">
-								  <label for="exampleFormControlTextarea1" class="form-label">Be the first to comment</label>
+                  <div class='comment_form_wrapper d-flex flex-row'>
+                    <div class='profile_thumb me-2' style='width:40px; height:40px;'>
+                       <img  width='100%' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU" class='border rounded-circle'/>
+                      
+                    </div>
+                    <div class='d-flex flex-column flex-grow-1'>
+<!-- 								  <label for="exampleFormControlTextarea1" class="form-label">Be the first to comment</label> -->
 								  <textarea placeholder='comment' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                 <button class="btn btn-primary mt-1">Post</button>   
 								</div>
-								<button class="btn btn-primary">Post</button>
+								
+                  </div>
+                </div>
 							</div>
+              </form>
+<!--               comment form ends here -->
 							<div class="comments-wrapper d-flex">
 								<!-- display all comments -->
+                <% if (data.comments.length > 0) {%>
+                  <!--                   display all comments here -->
+
+                  <% for (let i=0; i< data.comments.length; i++){ %>
+
+                    <div class='comment d-flex me-1 py-3 border-bottom' style='width:100%;'>
+
+                      <div class='comment_user flex-shrink-1' style='width:40px; height:40px;'>
+                        <img  width='100%' src="<%= data.comments[i].user_image %>" class='border rounded-circle'/>
+                        
+                      </div>
+                      <div class='comment_text flex-grow-1 mx-1  d-flex flex-column '>
+                        <div class='fw-bold'><%= data.comments[i].name %></div>
+                        <div class='lead'><%= data.comments[i].comment %></div>
+                      </div>
+
+                      
+                    </div>
+
+                    
+                 <% } %>
+
+                  
+               <% } %>
+
+
+
+                
 								
 							</div>
 						</div>

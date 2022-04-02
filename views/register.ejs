@@ -89,34 +89,27 @@
 
     registerForm.addEventListener('submit',(e)=>{
       e.preventDefault();
-
       //validation
-      if(email.value ==='' && password.value ===''){
+      console.log(email, " ", password);
+      if(email.value ==='' || password.value ===''){
         error.innerHTMLs= 'email and password is required';
-        return;
-        
+        alert("Email and Password are required");
+        return;        
       }else{
-        
-    
-         
-
      axios.post('/users/register', {
           email: email.value,
           password: password.value
         })
-        .then(function (response) {
-         
+        .then(function (response) {         
           if(response.data.success){
             console.log(response.data);
             // save user to localstorage
-             window.loaction ='/login';
-            
-          }else{          
-            
+             window.location ='/login';            
+          }else{
             var toast = new bootstrap.Toast(toastLiveExample)
 						toastBody[0].innerHTML = response.data.message;
     				toast.show();
-						return;           
+						return;         
            
           }
         })
