@@ -49,9 +49,18 @@
                                                                 </span>Home</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                        <a class="nav-link" href="/recipes">Recipes</a>
+                                                        <a class="nav-link" href="/recipes">
+                                                          <span class="material-icons">
+format_list_numbered_rtl
+</span>Recipes</a>
                                                 </li>
-                                                <li class="nav-item dropdown">
+                                           <li class="nav-item">
+                                                        <a class="nav-link" href="/diet">
+                                                          <span class="material-icons">
+egg_alt
+</span>Diet</a>
+                                                </li>
+<!--                                                 <li class="nav-item dropdown">
                                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                                                 role="button" data-bs-toggle="dropdown"
                                                                 aria-expanded="false">
@@ -67,9 +76,16 @@
                                                                 <li><a class="dropdown-item" href="#">Something else
                                                                                 here</a></li>
                                                         </ul>
-                                                </li>
+                                                </li> -->
                                                 <li class="nav-item">
-                                                        <a href='/users/my-plan' class="nav-link ">Meal Planner</a>
+                                                        <a href='/users/my-plan' class="nav-link ">
+                                                          <span class="material-icons">
+set_meal
+</span>Meal 
+                                                          Planner
+                                                          
+                                                        
+                                                        </a>
                                                 </li>
                                         </ul>
                                         <form class="d-flex">
@@ -79,6 +95,8 @@
                                         </form>
                                         <ul class="navbar-nav  mb-2 mb-md-0  justify-content-end">
                                           <% if(data.isLogged){ %>
+
+                                            
                                             <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                                             role="button" data-bs-toggle="dropdown"
@@ -94,8 +112,9 @@
                                                             <li>
                                                                     <hr class="dropdown-divider">
                                                             </li>
-                                                            <li><a class="dropdown-item" href="#">Something else
-                                                                            here</a></li>
+                                                            <li><a class="dropdown-item" href="#"><span class="material-icons">
+logout
+</span>Logout</a></li>
                                                     </ul>
                                             </li>
 
