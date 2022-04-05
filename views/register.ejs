@@ -89,6 +89,7 @@
     var toastLiveExample = document.getElementById('toast');
     const toastBody = document.getElementsByClassName('toast-body')
 
+<<<<<<< HEAD
 
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -105,8 +106,25 @@
 
         .then(function (response) {
 
+=======
+    registerForm.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      //validation
+      console.log(email, " ", password);
+      if(email.value ==='' || password.value ===''){
+        error.innerHTMLs= 'email and password is required';
+        alert("Email and Password are required");
+        return;        
+      }else{
+     axios.post('/users/register', {
+          email: email.value,
+          password: password.value
+        })
+        .then(function (response) {         
+>>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
           if(response.data.success){
             // save user to localstorage
+<<<<<<< HEAD
              window.location ='/login';
 
           }else{
@@ -116,6 +134,15 @@
     				toast.show();
 						return;
 
+=======
+             window.location ='/login';            
+          }else{
+            var toast = new bootstrap.Toast(toastLiveExample)
+						toastBody[0].innerHTML = response.data.message;
+    				toast.show();
+						return;         
+           
+>>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
           }
         })
         .catch(function (error) {

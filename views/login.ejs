@@ -37,15 +37,15 @@
 
 					<div class="form-floating mb-3">
 					  <input name='email'
-					  autocomplete="false" type="email" class="form-control rounded-pill" id="floatingInput" placeholder="name@example.com">
+					  autocomplete="false" type="email" class="form-control rounded-pill" id="email" placeholder="name@example.com">
 					  <label for="floatingInput">Email address</label>
 					</div>
-					<!-- <div class="form-floating">
-					  <input type="password" class="form-control rounded-pill" id="floatingPassword" placeholder="Password">
+					<div class="form-floating">
+					  <input id='password' name='password' type="password" class="form-control rounded-pill" id="floatingPassword" placeholder="Password">
 					  <label for="floatingPassword">Password</label>
-					</div> -->
+					</div> 
 
-					<div class="d-grid gap-2 ">
+					<div class="d-grid gap-2 mt-2">
 					  <button type="submit" id='login' class="btn btn-secondary rounded-pill login" type="button">Login</button>
 
 					</div>
@@ -56,13 +56,13 @@
 		<div class="toast-container position-absolute bottom-0 end-0 p-3" >
 		<div id='toast' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 		  <div class="toast-header">
-		    <img src="..." class="rounded me-2" alt="...">
-		    <strong class="me-auto">Error</strong>
+		    <span class="material-icons">info</span>
+		    <strong class="me-auto">Info</strong>
 		    <small>11 mins ago</small>
 		    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
 		  </div>
 		  <div class="toast-body">
-		    Hello, world! This is a toast message.
+		    
 		  </div>
 		</div>
 	</div>
@@ -72,28 +72,26 @@
 
 
 <script type="text/javascript">
-	const email = document.getElementById('floatingInput');
+	const email = document.getElementById('email');
+  const password = document.getElementById('password');
 	const login = document.getElementById('login');
 	const form = document.getElementById('form')
 	var toastLiveExample = document.getElementById('toast');
 	const toastBody = document.getElementsByClassName('toast-body')
 
-	login.style.display='none';
 
-	email.addEventListener("blur", showLoginButton)
-	email.addEventListener("keydown", showLoginButton)
-	email.addEventListener("keyup", showLoginButton)
-	email.addEventListener("focus", showLoginButton);
 
 	// send form
 	form.addEventListener("submit", submit);
 	function submit (e){
 
 		e.preventDefault();
-
-
-		if(email.value ==='')
-			return;
+		if(email.value ==='' || password.value ===''){
+        alert("Please provide Email and Password");
+      	return;
+    }
+      
+		
 		// send form
 
 		fetch('/users/', {
@@ -101,9 +99,10 @@
 			  headers: {
 			    'Content-Type': 'application/json',
 			  },
-			  body: JSON.stringify({ email: email.value }),
+			  body: JSON.stringify({ email: email.value, password:password.value }),
 			})
 			.then(response => response.json())
+<<<<<<< HEAD
 			.then(data => {
 					if(data.error){
 						var toast = new bootstrap.Toast(toastLiveExample)
@@ -123,11 +122,32 @@
 						return;
 
 					}
+=======
+			.then(data => {  
+      	if(!data.data.success){
+						let toast = new bootstrap.Toast(toastLiveExample)
+						toastBody[0].innerHTML = data.data.message;
+    	    	toast.show()
+            
+						
+					}
+          
+          else{
+	          let toast = new bootstrap.Toast(toastLiveExample)
+						toastBody[0].innerHTML = data.data.message;
+						toast.show()
+						setTimeout(()=>window.location =`/users/dashboard`,1000)
+						
+            
+          }
+
+>>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
 			})
 			.catch((error) => {
-			  console.error('Error:', error);
+        console.log(error);
+			  console.error('Error:', error.message);
 			});
-		e.preventDefault();
+		
 		return false;
 
 

@@ -2,6 +2,7 @@
 // import users model
 const Users = require("../models/users.model");
 
+<<<<<<< HEAD
 
 // login user
 const Login = model => async (req, res, next) => {
@@ -69,3 +70,5 @@ module.exports = UserController = {
   login: login,
   register
 }
+=======
+>>>>>>> e95ecca17d2303af5533099b798a90c22065b83c

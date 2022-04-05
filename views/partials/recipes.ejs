@@ -1,30 +1,35 @@
 
 
-<% for(var i=0; i< data.length; i++){ %>
-  <div class="d-flex flex-column mb-2 shadow">
+<% if(data.data.docs.length ==0){  %>
+
+  <h1 class='display-4'>No Recipes Yet</h1>
+
+  
+<%}else{ %>
+
+<% for(var i=0; i< data.data.docs.length; i++){ %>
+  <div class="d-flex flex-column mb-2 card">
         <div class="recipe-wrapper-item border p-1  d-sm-flex flex-sm-row ">
           <div class="flex-shrink-1 p-2">
             <div class='' style='width:300px'>
-            <a href="/recipes/<%= data[i].id %>">
-              <img loading='lazy' src="<%= data[i].image %>" alt='' class="img-thumbnail"/>
+            <a href="/recipes/<%= data.data.docs[i].id %>">
+              <img loading='lazy' src="<%= data.data.docs[i].image %>" alt='' class="img-thumbnail"/>
             </a>
             </div>
           </div>
-          <div class="flex-grow-1 p-2">
+          <div class="flex-grow-1 p-2 card-body">
             <h2 style="font-family: Lobster;">
-              <a href="/recipes/<%= data[i].id %>" class="link-secondary text-decoration-none"><%= data[i].title %></a></h2>
+              <a href="/recipes/<%= data.data.docs[i].id %>" class="link-secondary text-decoration-none"><%= data.data.docs[i].title %></a></h2>
               <div class="recipes-views">
-                <span class="badge rounded-pill bg-secondary"> <%= data[i].views %> views</span>
-                <span class="badge rounded-pill bg-info"> <%= data[i].likes %> Likes</span>
+                <span class="badge rounded-pill bg-secondary"> <%= data.data.docs[i].views.length %> views</span>
+                <span class="badge rounded-pill bg-info"> <%= data.data.docs[i].likes.length %> Likes</span>
               </div>
-            <p class="lead"><%= data[i].description.slice(0,100) %>...</p>
+            <p class="lead"><%= data.data.docs[i].description.slice(0,100) %>...</p>
           </div>
 
         </div>
 
 
       </div>
-
-
-
+<%} %>
 <%} %>

@@ -21,35 +21,55 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+<<<<<<< HEAD
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 // in latest body-parser use like below.
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser("notSoSecret"));
+=======
+app.use(bodyParser.urlencoded({ extended: false }))
+
+>>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(function(req, res, next) {
 //   res.locals.user = req.session.user;
 //   next();
 // });
 app.use(session({
-  secret : 'something',
+  name:"mycookie",
+  secret : 'mycookie',
   cookie: { maxAge: 60000 },
   resave: true,
   saveUninitialized: true
 }))
 app.use(flash())
+
 // connect db
 db().catch(err => console.log(err));
+
+app.use(cookieParser());
 // routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipeRouter);
 
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+// error
+app.use((error, req, res, next)=>{
+  res.locals.user =req.user;
+  console.error("line 36",error.message);
+  res.json({data:{success:false, message:error.message}})
+
+   
+})
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -1,5 +1,5 @@
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -21,9 +21,12 @@
 </head>
 
 
-<main class="main d-flex">
+<main class="main d-flex dashboard">
+<!--   header -->
+  <%- include('./partials/header'); %>
+<!--   header ends here -->
   <!-- sidebard -->
-  <div class="d-flex flex-column flex-shrink-0 left-sidebar" style="width: 4.5rem;">
+  <div class="d-flex flex-column flex-shrink-0 left-sidebar" >
     <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
      Stash
       <span class="visually-hidden">Icon-only</span>
@@ -84,8 +87,8 @@
   <!-- main-dashboard -->
   <div class='home-dashboard ' style='margin-left:4.5rem; width:calc(100% - 4.5rem)'>
      <div class='container '>
-       <div class="row">
-         <div class="dashboard-title d-flex border-bottom">
+       <div class="row pt-5">
+         <div class="dashboard-title d-flex border-bottom pt-5">
            <h1 class="display-5" style='font-family:Lobster'>Dashboard</h1>
          </div>
 
@@ -133,6 +136,13 @@
          </div>
 
        </div>
+    <div class ='row'>
+      <div class='col-md-4'>
+        <h2 class='display-4'>Breakfast </h2>
+        <p></p>
+        
+      </div>
+     
      </div>
   </div>
     <!-- main-dashboard ends here -->

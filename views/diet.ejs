@@ -1,0 +1,39 @@
+  <%- include('./partials/header'); %>
+  <div class='diet-wrapper d-flex justify-content-center align-items-center ' style='min-height:100vh'>
+    <div class='container'>
+
+      <div class='row justify-content-center align-items-center'>
+
+        <div class='col-md-6'>
+
+          <h2 class='text-center'>Pick Your Diet</h2>
+
+          <div class='diet-select border'>
+            <form class='diet-form' method='post' action='/recipes'>
+
+  
+            <div class="diets d-flex justify-content-center align-items-center flex-column p-5 ">
+                <% for(let i=0; i<data.diets.length; i++){ %>
+                    <label class='p-2 border shadow-sm mb-2' for="<%=data.diets[i] %>">
+                      <input name="<%= data.diets[i] %>" type='checkbox'value="<%=data.diets[i] %>"  id="<%=data.diets[i] %>" />                       <%=data.diets[i] %>
+                    </label>
+                     
+                  
+                <% } %>   
+            </div>
+                 <div class='diets-check'>
+                  <button class='btn btn-primary'>Submit</button>
+                  
+                  </div>
+  
+</form>
+                 
+          </div>
+          
+        </div>
+
+        
+      </div>
+    </div>
+
+  </div>
