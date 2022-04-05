@@ -3,6 +3,49 @@
 
 <main class="main d-sm-flex ">
 
+  <aside class="aside-left border-start  d-flex flex-shrink-1" style='width:18%; background:#f5f5f5; position:fixed; height:100% '>
+
+    <div class='inner-aside d-flex justify-content-center align-items-center ' style='position:relative; height:100%; width:100%'>
+
+      <div class='inner-side-wrap d-flex  justify-content-center align-items-end flex-column' style='width:100%; height:100% ;margin-right:10px;'>
+      <div class='d-flex flex-column mb-1 justify-content-center align-items-center'>
+      	<button class="save_btn btn btn-default d-flex flex-column justify-content-center align-items-center likes_btn btn  btn-default  justify-content-start align-items-center mb-2">
+									<span class="material-icons">favorite_border</span>
+          <span><%= data.likes.length %></span>
+								</button>
+      
+			
+      </div>
+
+         <div class='d-flex flex-column justify-content-center align-items-center '>
+      	
+								<button class=" d-flex flex-column justify-content-center align-items-center likes_btn btn  btn-default  justify-content-start align-items-center">
+									<span class="material-icons">bookmark</span>
+                  <span><%= data.views.length %></span>
+								</button>
+         
+      </div>
+
+        
+         <div class='d-flex flex-column justify-content-center align-items-center '>
+      	
+								<button class=" d-flex flex-column justify-content-center align-items-center likes_btn btn  btn-default  justify-content-start align-items-center">
+									<span class="material-icons">thumb_up</span>
+                  <span><%= data.views.length %></span>
+								</button>
+         
+      </div>
+
+        
+      </div>
+      
+
+      
+    </div>
+  </aside>
+
+<!--   left aside ends here -->
+
 	<div class="content flex-sm-column d-sm-flex">
 		<div class="container">
 			<div class="row py-4">
@@ -11,12 +54,7 @@
 						<div class="recipe-view">
 							<div class="recipe-item">
 								<img class='p-2 border 'src="<%= data.image %>" alt="" width="100%" />
-								<button class="save_btn btn btn-primary ">
-									<span class="material-icons">favorite_border</span>
-								</button>
-								<button class="likes_btn btn  btn-primary  justify-content-start align-items-center">
-									<span class="material-icons">thumb_up</span>
-								</button>
+							
 
 							</div>
 							
@@ -53,20 +91,23 @@
 								</div>
 							</div>
 						
-						<div class="recipe-steps">
+						<div class="recipe-steps border-start p-2">
 						<h1 class="display-5 ">
 								Follow these steps below
 							</h1>
+             
 						<% for( let i=0; i<data.steps.length; i++){ %>
-            <p class="lead"> <span><%- i+1 %> - </span> <%=  data.steps[i] %></p>
+            <p class="lead px-2"> <span><%- i+1 %> - </span> <%=  data.steps[i] %></p>
               
             <%} %>
               
 						</div>
-						<div class="recipe-view-comments  d-flex flex-column">
+						<div class="recipe-view-comments  d-flex flex-column mt-3">
 							<!-- comment form -->
 							<div class="comments-form">
-								<h4><%= data.comments.length %></h4>
+                <div class='comments-title mb-3 mt-2'>
+								  <h4>Comments(<%= data.comments.length %>)</h4>
+                </div>
 
 <!--                 comment form  -->
                 <form action="/<%= data._id %>/comment" method='post'>
@@ -79,8 +120,7 @@
                     <div class='d-flex flex-column flex-grow-1'>
 <!-- 								  <label for="exampleFormControlTextarea1" class="form-label">Be the first to comment</label> -->
 								  <textarea placeholder='comment' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                 <button class="btn btn-primary mt-1">Post</button>   
-								</div>
+               
 								
                   </div>
                 </div>
@@ -94,15 +134,21 @@
 
                   <% for (let i=0; i< data.comments.length; i++){ %>
 
-                    <div class='comment d-flex me-1 py-3 border-bottom' style='width:100%;'>
+                    <div class='comment d-flex me-1 py-3 ' style='width:100%;'>
 
-                      <div class='comment_user flex-shrink-1' style='width:40px; height:40px;'>
-                        <img  width='100%' src="<%= data.comments[i].user_image %>" class='border rounded-circle'/>
+                      <div class='comment_user flex-shrink-1  rounded' style='width:40px; height:40px;'>
+<!--                         <img  width='100%' src="<%= data.comments[i].user_image %>" class='border rounded-circle'/> -->
+                        <span class="material-icons">
+account_circle
+</span>
                         
                       </div>
-                      <div class='comment_text flex-grow-1 mx-1  d-flex flex-column '>
-                        <div class='fw-bold'><%= data.comments[i].name %></div>
-                        <div class='lead'><%= data.comments[i].comment %></div>
+                      <div class='comment_text flex-grow-1 mx-1  d-flex flex-column  border p-2'>
+                        <div class='fw-bold d-flex flex-row'>
+                          <span><%= data.comments[i].name %></span>
+<!--                           <time><%= data.comments[i].date %></time> -->
+                        </div>
+                        <div class='lead py-2'><%= data.comments[i].comment %></div>
                       </div>
 
                       

@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 
 const recipeSchema = new Schema({
@@ -17,6 +18,7 @@ const recipeSchema = new Schema({
   
   
 },{timestamps:true})
+recipeSchema.plugin(mongoosePaginate);
 const Recipe = mongoose.model("Recipe",recipeSchema);
 /* const Recipes = [
 

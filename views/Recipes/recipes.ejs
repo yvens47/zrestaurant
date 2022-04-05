@@ -1,10 +1,10 @@
-<%- include('../partials/header'); %>
+<%- include('../partials/header'); %> 
 <div class="main">
 	<div class="container">
 		<div class="row py-5 ">
 			<div class="col-md-9">
 				<div class="d-flex border-bottom flex-column pt-3 pb-3">
-					<h1 class="display-3"> All Recipes (<%= data.length %>)</h1>
+					<h1 class="display-3"> All Recipes (<%= data.data.totalDocs %>)</h1>
 					<p class="lead">a responsibility that I have, to push possibilities, to show people.</p>
 					<div class="recipe-filter d-flex">
 						<button type="button" name="button" class='btn btn-outline-primary me-1'>most views</button>
@@ -15,28 +15,42 @@
 				</div>
 
 				<!-- Recipes list -->
-				<%- include('../partials/recipes') %>
+		<%- include('../partials/recipes') %> 
 
 
 				<!-- pagination -->
-          <% if(data.length !=0){  %>
+          <% if(data.data.docs.length !=0){  %>
 				<div class="d-flex mt-3">
 
 					<nav aria-label="Page navigation example">
 				  <ul class="pagination pagination-lg">
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Previous">
+            	    <li class="page-item">
+				      <a class="page-link" href="/recipes/?page=<%= data.data.page-1 %>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
 				    </li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Next">
+            <% for(let i=1; i<=data.data.totalPages; i++){ %>
+             <li class="page-item"><a class="page-link" href="/recipes/?page=<%= i %>"><%= i %></a></li>
+              
+           <% } %>
+			
+				  <% if(data.data.hasNextPage){ %>
+            <li class="page-item">
+				      <a class="page-link" href="/recipes/?page=<%= data.data.page+1 %>" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				      </a>
-				    </li>
+				    </li>           
+            
+            <%}else{ %>
+              <li class="page-item">
+				      <a class="page-link btn-link disabled" href="" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>   
+
+              
+           <% } %>
+				    
 				  </ul>
 				</nav>
 

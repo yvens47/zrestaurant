@@ -9,14 +9,13 @@
           <h2 class='text-center'>Pick Your Diet</h2>
 
           <div class='diet-select border'>
-            <form>
+            <form class='diet-form' method='post' action='/recipes'>
 
   
             <div class="diets d-flex justify-content-center align-items-center flex-column p-5 ">
                 <% for(let i=0; i<data.diets.length; i++){ %>
                     <label class='p-2 border shadow-sm mb-2' for="<%=data.diets[i] %>">
-                      <input type='checkbox'value="<%=data.diets[i] %>"  id="<%=data.diets[i] %>" /> 
-                      <%=data.diets[i] %>
+                      <input name="<%= data.diets[i] %>" type='checkbox'value="<%=data.diets[i] %>"  id="<%=data.diets[i] %>" />                       <%=data.diets[i] %>
                     </label>
                      
                   
