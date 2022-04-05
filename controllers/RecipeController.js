@@ -13,7 +13,7 @@ const Recipes = model => async (req, res) => {
   try {
 
 
-    let { limit, page } = req.query; 
+    let { limit, page } = req.query;
 
     const paginateData = await model.paginate({},
       {  limit: 2, page:parseInt(page) }
@@ -66,24 +66,13 @@ const Read = model => async (req, res) => {
 
   try {
     const { id } = req.params;
-<<<<<<< HEAD
-    const result = model.findById(id,(error, doc)=>{
-       console.log(doc)
-      console.log(error)
-    if(error && !doc ) return res.render('notfound',{notFound:"Not Found."});
 
-    return res.render("Recipes/recipe", { data: doc });
-
-    });
-
-=======
     const result = model.findById(id, (error, doc) => {
       if (error && !doc) return res.render('notfound', { notFound: "Not Found." });
-      
       return res.render("Recipes/recipe", { data: doc });
+    })
 
-    });
->>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
+
 
   } catch (error) { console.log(error) };
 
