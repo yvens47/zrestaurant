@@ -26,9 +26,7 @@ const Create = model => (req, res) => {
       return res.json({message:"there must be a title"})
 
     }
-
-
-    const recipeObject = {title:name,description:about};
+    const recipeObject = {title:recipe,description:about};
     const newRecipe = new model(recipeObject);
 
     newRecipe.save(function(error){
