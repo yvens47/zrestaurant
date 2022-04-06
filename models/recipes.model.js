@@ -5,7 +5,7 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 
 
 const recipeSchema = new Schema({
-  title:{type:String,minLength:8},
+  title:{type:String,min:[3, "Title is to short"]},
   description:String,
   steps:{type:Array, default:null},
   ingredients:[],
@@ -14,9 +14,9 @@ const recipeSchema = new Schema({
   views:{type:Array, default:[]},
   likes:{type:Array, default:[]},
   comments:[],
-  
-  
-  
+
+
+
 },{timestamps:true})
 recipeSchema.plugin(mongoosePaginate);
 const Recipe = mongoose.model("Recipe",recipeSchema);
@@ -26,7 +26,7 @@ const Recipe = mongoose.model("Recipe",recipeSchema);
           title: "ipsum dolor ",
           views:23,
           likes:10,
-         
+
 
           description:"Lorem ipsum dolor sit amet, h. Aliquam aliquam sem nisi, in maximus orci semper vel. Aliquam convallis mollis orci, id scelerisque sapien imperdiet sed.",
           steps:[],

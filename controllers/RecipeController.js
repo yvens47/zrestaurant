@@ -6,9 +6,39 @@ var ObjectId = require('mongoose').Types.ObjectId;
 const RecipesModel = require("../models/recipes.model");
 // const querystring = require('querystring');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const multer  = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb){
+    console.log(file)
+  cb(null, `./public/uploads`);
+
+  },
+  filename: function (req, file, cb){
+    console.log("Line 18", file, req);
+  const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+   cb(null, file.fieldname + '-' + uniqueSuffix)
+
+  }
+})
+
+const fileFilter = (req, file, cb)=>{
+//
+
+  if(file. mimetype ==='image/jpeg'){
+
+  }
+
+
+}
+//const upload = multer({ storage: storage ,fileFilter, limits:{fileSize: Infinity}}).single("image");
+
+//const upload = multer({ storage: storage ,fileFilter, limits:{fileSize: Infinity}}).single("image");
 
 // all recipes
 const Recipes = model => async (req, res) => {
+
+
 
   try {
 
@@ -29,11 +59,10 @@ const Recipes = model => async (req, res) => {
 }
 
 // create
-const Create = model => (req, res) => {
-
-
-
+const Create = model =>  (req, res) => {
   try {
+
+    console.log(req);
 
 
     const {recipe, about} =req.body;
@@ -45,6 +74,7 @@ const Create = model => (req, res) => {
     const newRecipe = new model(recipeObject);
 
     newRecipe.save(function(error){
+      console.log(error);
       if(error)return res.json({message:"could not create document"})
       res.json({message:"success completed"})
         });

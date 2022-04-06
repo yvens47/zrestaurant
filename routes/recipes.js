@@ -1,12 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const recipeController = require("../controllers/RecipeController")
+const multer  = require('multer');
+
+
+const upload = multer({ dest: './public/uploads/' })
+
+
 
 /* GET recipes listing. */
 
 router.get("/", recipeController.recipes);
-router.post("/", (req, res) => {
-  
+router.post("/",  upload.single('image'),(req, res) => {
+
   res.json({ message: req.body })
 })
 
@@ -16,7 +22,7 @@ router.post("/", (req, res) => {
 router.get("/:id", recipeController.read)
 
 // add a recipe
-router.post("/add", recipeController.create);
+router.post("/add", upload.single('image'),recipeController.create);
 
 
 module.exports = router;

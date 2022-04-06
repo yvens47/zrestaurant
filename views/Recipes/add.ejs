@@ -70,17 +70,25 @@
       <div class="row justify-content-center ">
         <div class="col-md-8 py-5">
           <h1 class="display-3"><%= title %></h1>
-          <form action='/recipes/add' method='post'>
+          <form action='/recipes/add' method='post' enctype="multipart/form-data">
           <div class="mb-3">
             <label for="recipe_name" class="form-label">Recipe name </label>
-            <input name='recipe' type="text" class="form-control" id="recipe_name" placeholder="recipe name">
+            <input accept="image/png, image/jpeg" name='recipe' type="text" class="form-control" id="recipe_name" placeholder="recipe name">
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea name='about' placeholder="Brief description of your recipe" class="form-control" id="description" rows="3"></textarea>
           </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">
+              Pick an image
+                <input type="file" name='image' class="form-control" />
 
-        <div class="mb-3 d-grid gap-2 ">
+            </label>
+
+          </div>
+
+        <div class="mb-3 ">
           <button type="submit"  class="btn btn-primary btn-block"><span class="material-icons">
 add
 </span></button>

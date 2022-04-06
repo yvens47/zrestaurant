@@ -14,34 +14,34 @@
 									<span class="material-icons">favorite_border</span>
           <span><%= data.likes.length %></span>
 								</button>
-      
-			
+
+
       </div>
 
          <div class='d-flex flex-column justify-content-center align-items-center '>
-      	
+
 								<button class=" d-flex flex-column justify-content-center align-items-center likes_btn btn  btn-default  justify-content-start align-items-center">
 									<span class="material-icons">bookmark</span>
                   <span><%= data.views.length %></span>
 								</button>
-         
+
       </div>
 
-        
+
          <div class='d-flex flex-column justify-content-center align-items-center '>
-      	
+
 								<button class=" d-flex flex-column justify-content-center align-items-center likes_btn btn  btn-default  justify-content-start align-items-center">
 									<span class="material-icons">thumb_up</span>
                   <span><%= data.views.length %></span>
 								</button>
-         
+
       </div>
 
-        
-      </div>
-      
 
-      
+      </div>
+
+
+
     </div>
   </aside>
 
@@ -64,7 +64,7 @@
 									</div>
 								</div>
 								<img class='p-2 border 'src="<%= data.image %>" alt="" width="100%" />
-							
+
 
 							</div>
 
@@ -98,25 +98,17 @@
 
 								</div>
 							</div>
-<<<<<<< HEAD
 
-						<div class="recipe-steps">
-=======
-						
 						<div class="recipe-steps border-start p-2">
->>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
+
 						<h1 class="display-5 ">
 								Follow these steps below
 							</h1>
-             
-						<% for( let i=0; i<data.steps.length; i++){ %>
-<<<<<<< HEAD
-            <p class="lead"> <span><%- i+1 %> - </span> <%=  data.steps[i] %></p>
 
-=======
+						<% for( let i=0; i<data.steps.length; i++){ %>
+
             <p class="lead px-2"> <span><%- i+1 %> - </span> <%=  data.steps[i] %></p>
-              
->>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
+
             <%} %>
 
 						</div>
@@ -133,13 +125,13 @@
                   <div class='comment_form_wrapper d-flex flex-row'>
                     <div class='profile_thumb me-2' style='width:40px; height:40px;'>
                        <img  width='100%' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU" class='border rounded-circle'/>
-                      
+
                     </div>
                     <div class='d-flex flex-column flex-grow-1'>
 <!-- 								  <label for="exampleFormControlTextarea1" class="form-label">Be the first to comment</label> -->
 								  <textarea placeholder='comment' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-               
-								
+
+
                   </div>
                 </div>
 							</div>
@@ -147,9 +139,7 @@
 <!--               comment form ends here -->
 							<div class="comments-wrapper d-flex">
 								<!-- display all comments -->
-<<<<<<< HEAD
 
-=======
                 <% if (data.comments.length > 0) {%>
                   <!--                   display all comments here -->
 
@@ -162,7 +152,7 @@
                         <span class="material-icons">
 account_circle
 </span>
-                        
+
                       </div>
                       <div class='comment_text flex-grow-1 mx-1  d-flex flex-column  border p-2'>
                         <div class='fw-bold d-flex flex-row'>
@@ -172,20 +162,20 @@ account_circle
                         <div class='lead py-2'><%= data.comments[i].comment %></div>
                       </div>
 
-                      
+
                     </div>
 
-                    
+
                  <% } %>
 
-                  
+
                <% } %>
 
 
 
-                
-								
->>>>>>> e95ecca17d2303af5533099b798a90c22065b83c
+
+
+
 							</div>
 						</div>
 

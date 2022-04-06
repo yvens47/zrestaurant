@@ -60,6 +60,10 @@ router.get("/diet", (req, res)=>{
   res.render("diet", {data:{title:"set your diet",diets}});
 })
 
+router.get("/my-calendar", (req, res)=>{
+
+  res.render("calendar", {data:[]})
+})
 
 
 module.exports = router;

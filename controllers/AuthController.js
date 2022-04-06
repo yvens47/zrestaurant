@@ -13,7 +13,7 @@ const Bcrypt = require('bcrypt');
 Login = model => async (req, res, next) => {
 
 
-  
+
   try {
     const { email, password } = req.body;
     if (!email || !password) return next(new Error("Please provide email and password"));
@@ -38,7 +38,8 @@ Login = model => async (req, res, next) => {
 
 
   } catch (e) {
-   
+    console.log(e);
+
    return next(new Error("Error"));
 
 
@@ -82,7 +83,7 @@ Register = model => async (req, res, next) => {
 
 
     }
-    // else 
+    // else
     else {
       return res.json({ message: "Email and password must not be empty." })
     }
@@ -98,16 +99,16 @@ Authenticated = async (req, res, next)=>{
 
 try{
 
- 
-  const token = req.cookies.jwt;  
+
+  const token = req.cookies.jwt;
   //console.log(token.split('=')[1]);
-  if(!token) { 
-    
+  if(!token) {
+
     return next(new Error("You are not login"))
   };
-  const tokenData = jwt.verify(token,'secret'); 
+  const tokenData = jwt.verify(token,'secret');
 
-  const user = await Users.findById(tokenData.id);  
+  const user = await Users.findById(tokenData.id);
   if(!user) return next(new Error("Token for this user no longer exist"));
   //console.log("authenticated");
   user.password = undefined;
@@ -120,16 +121,16 @@ try{
 
 
   req.user = user;
-  
+
   return next();
-  
+
 }
   catch(error){
     console.log(error);
   }
 
 
-  
+
 }
 
 exports.login = Login(Users);
