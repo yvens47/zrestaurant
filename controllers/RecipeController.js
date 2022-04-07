@@ -45,12 +45,13 @@ const Recipes = model => async (req, res) => {
 
     let { limit, page } = req.query;
 
+
     const paginateData = await model.paginate({},
-      {  limit: 2, page:parseInt(page) }
+      {  limit: limit, page:parseInt(page) }
     );
 
 
-    res.render('Recipes/recipes', { data: { data: paginateData, title: "All Recipes" } });
+    res.json( { data: paginateData });
   }
   catch (e) {
     console.log(e)
@@ -96,10 +97,10 @@ const Read = model => async (req, res) => {
 
   try {
     const { id } = req.params;
-
     const result = model.findById(id, (error, doc) => {
-      if (error && !doc) return res.render('notfound', { notFound: "Not Found." });
-      return res.render("Recipes/recipe", { data: doc });
+      if (error && !doc) return res.json({ message:"error", notFound: "Not Found." });
+      res.json({ data: doc });
+      //return res.render("Recipes/recipe", { data: doc });
     })
 
 

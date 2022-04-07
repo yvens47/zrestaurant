@@ -6,6 +6,7 @@ var logger = require('morgan');
 const flash = require('connect-flash')
 const session =require('express-session')
 const bodyParser =  require('body-parser');
+const cors = require('cors')
 const db = require('./utils/db.js')
 
 var indexRouter = require('./routes/index');
@@ -13,7 +14,7 @@ var usersRouter = require('./routes/users');
 const recipeRouter = require('./routes/recipes')
 
 var app = express();
-
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -55,23 +56,22 @@ app.use(function(req, res, next) {
 });
 
 // error
-app.use((error, req, res, next)=>{
-  res.locals.user =req.user;
-  console.error("line 36",error.message);
-  res.json({data:{success:false, message:error.message}})
-
-
-})
+// app.use((error, req, res, next)=>{
+//   res.locals.user =req.user;
+//   console.error("line 36",error.message);
+//   res.json({data:{success:false, message:error.message}})
+//
+//
+// })
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
+  res.locals.error = req.app.get('env') === 'development' ? err : {};  // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  //res.render('error');
+  res.json(err)
 });
 
 module.exports = app;
