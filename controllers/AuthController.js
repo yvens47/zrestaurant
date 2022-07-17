@@ -1,6 +1,6 @@
 
 const jwt = require('jsonwebtoken');
-const {promisify} = require('util')
+const { promisify } = require('util')
 // import users model
 const Users = require("../models/users.model");
 const Bcrypt = require('bcrypt');
@@ -13,7 +13,7 @@ const Bcrypt = require('bcrypt');
 Login = model => async (req, res, next) => {
 
 
-  
+
   try {
     const { email, password } = req.body;
     if (!email || !password) return next(new Error("Please provide email and password"));
@@ -30,7 +30,7 @@ Login = model => async (req, res, next) => {
     // session and jwt
     const { _id, about, username } = user;
     const token = jwt.sign({ id: _id }, "secret", { expiresIn: '7d' });
-    res.cookie("jwt",token,{ expires: new Date(Date.now() + 900000), httpOnly: true })
+    res.cookie("jwt", token, { expires: new Date(Date.now() + 900000), httpOnly: true })
 
     res.json(
       { token, data: { isLogged: true, success: true, message: "Logged in " }, user: { email, _id, about, username } });
@@ -38,8 +38,8 @@ Login = model => async (req, res, next) => {
 
 
   } catch (e) {
-   
-   return next(new Error("Error"));
+
+    return next(new Error("Error"));
 
 
   }
@@ -94,44 +94,72 @@ Register = model => async (req, res, next) => {
 
 
 }
-Authenticated = async (req, res, next)=>{
+Authenticated = async (req, res, next) => {
 
-try{
-
- 
-  const token = req.cookies.jwt;  
-  //console.log(token.split('=')[1]);
-  if(!token) { 
-    
-    return next(new Error("You are not login"))
-  };
-  const tokenData = jwt.verify(token,'secret'); 
-
-  const user = await Users.findById(tokenData.id);  
-  if(!user) return next(new Error("Token for this user no longer exist"));
-  //console.log("authenticated");
-  user.password = undefined;
-
-  // check if user change password and compare the updatedAt  to JWT timestamp; jwttimestamp < updatedAt; ask the user log gin again.
-
- // if(user.passwordChangedAfter(tokenData.iat)){
- //    return next(new Error("Password recently changed! Please login"));
- // }
+  try {
 
 
-  req.user = user;
-  
-  return next();
-  
-}
-  catch(error){
+    const token = req.cookies.jwt;
+    //console.log(token.split('=')[1]);
+    if (!token) {
+
+      return next(new Error("You are not login"))
+    };
+    const tokenData = jwt.verify(token, 'secret');
+
+    const user = await Users.findById(tokenData.id);
+    if (!user) return next(new Error("Token for this user no longer exist"));
+    //console.log("authenticated");
+    user.password = undefined;
+
+    // check if user change password and compare the updatedAt  to JWT timestamp; jwttimestamp < updatedAt; ask the user log gin again.
+
+    // if(user.passwordChangedAfter(tokenData.iat)){
+    //    return next(new Error("Password recently changed! Please login"));
+    // }
+
+
+    req.user = user;
+
+    return next();
+
+  }
+  catch (error) {
     console.log(error);
   }
 
 
-  
+
 }
+forgotPassword = model => async (req, res) => {
+
+  try {
+    const { email } = req.params;
+    const user = await model.findOne({ email: email })
+
+
+    if (!user) {
+      res.json({ status: "failed", message: "The email provided does not exist" })
+    }
+
+    // generate a random password and email to user
+    
+    res.json({ status: "success", message: "Your password has been emiled", user })
+
+
+
+  }
+  catch (e) {
+
+  }
+
+
+
+
+}
+
 
 exports.login = Login(Users);
 exports.register = Register(Users);
 exports.authenticate = Authenticated;
+exports.forgotPassword = forgotPassword(Users);

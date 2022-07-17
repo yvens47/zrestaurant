@@ -45,6 +45,12 @@ router.get('/login', function(req, res, next) {
   res.render('login',{data:{title:"Login"}});
 });
 
+
+router.get('/forgot-password', function (req, res, next){
+
+  res.render('forgot-password', {data:{title:"Forgot my Password"}})
+})
+
 router.get('/register', function(req, res, next) {
   res.render('register',{data:{title:"Sign up"}});
 });

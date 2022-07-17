@@ -10,6 +10,8 @@ const AuthController = require("../controllers/AuthController")
 router.post("/register", AuthController.register);
 router.post('/', AuthController.login);
 
+router.get("/forgot-password/:email", AuthController.forgotPassword)
+
 // user home
 router.get('/dashboard', AuthController.authenticate,function(req, res, next) {
   
@@ -19,7 +21,6 @@ router.get('/dashboard', AuthController.authenticate,function(req, res, next) {
 });
 // planner
 router.get("/my-plan", AuthController.authenticate, (req, res) => {
-
 
   
   res.render("meal-planner", { data: { title: "", meals: [], recipes:[
